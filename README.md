@@ -71,7 +71,7 @@ quickmed.exe # Windows
 | Nome                    | GitHub                                           |
 | ----------------------- | ------------------------------------------------ |
 | Benito Juarez           | [@benitojuarez](https://github.com/benitojuarez) |
-| Hiago Melo              | [@hiagomelo](github.com/mkzzo)                   |
+| Hiago Melo              | [@hiagomelo](https://github.com/mkzzo)                   |
 
 ---
 
