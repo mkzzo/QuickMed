@@ -1,101 +1,81 @@
-# 🚀 QuickMed – Sistema Inteligente de Gerenciamento de Filas Hospitalares
+# QuickMed
 
-**Resumo:**
-O QuickMed é um sistema desenvolvido em linguagem C que simula o gerenciamento inteligente de filas em ambientes hospitalares. Ele busca promover eficiência, organização e priorização clínica no atendimento de pacientes, aplicando conceitos fundamentais de estruturas de dados como listas e filas dinâmicas.
+**Simulador de gerenciamento de filas hospitalares desenvolvido em C.** O projeto demonstra como estruturas de dados podem organizar pacientes por prioridade e registrar atendimentos em um fluxo simples executado pelo terminal.
 
----
+> **Aviso:** o QuickMed é um projeto acadêmico e demonstrativo. Não substitui avaliação profissional, protocolos oficiais de triagem ou sistemas utilizados em serviços de saúde. Use somente dados fictícios.
 
-## 🎯 Objetivo
+## Funcionalidades
 
-Este projeto tem como objetivo central demonstrar a aplicação prática de estruturas de dados no contexto da saúde pública, modelando o fluxo de atendimento hospitalar em três etapas: cadastro, triagem e atendimento médico. O sistema resolve problemas como ausência de controle no fluxo de pacientes, falta de priorização clínica, e dificuldade de rastreamento de atendimentos. Serve também como ferramenta didática para alunos e professores de disciplinas como Estrutura de Dados.
+- Cadastro de pacientes com geração sequencial de senha.
+- Classificação em três níveis: emergência, urgência e não urgente.
+- Filas circulares independentes para cada nível, com atendimento prioritário e ordem FIFO dentro de cada fila.
+- Consulta do próximo paciente a ser chamado.
+- Registro, consulta, filtragem por data e exclusão de atendimentos do histórico durante a execução.
+- Exportação manual do histórico para JSON e CSV.
+- Geração de relatório de tempo médio de espera por prioridade.
 
----
+## Estruturas de dados
 
-## 👨‍💻 Tecnologias Utilizadas
+O programa utiliza filas circulares para organizar os pacientes aguardando atendimento e uma lista encadeada para manter o histórico dos atendimentos concluídos. A prioridade de atendimento é definida nesta ordem:
 
-* Linguagem C
-* Bibliotecas padrão (`stdio.h`, `stdlib.h`, `string.h`, `time.h`)
-* Compatibilidade multiplataforma com `windows.h` e `unistd.h`
-* Geração de relatórios em arquivos `.txt` e `.json`
+1. Emergência
+2. Urgência
+3. Não urgente
 
----
+Em cada categoria, os pacientes são chamados na ordem em que foram cadastrados.
 
-## 🗂️ Estrutura do Projeto
+## Requisitos
 
-```
-📆 quickmed
-├─ QuickMed.c             # Código principal do sistema
-├─ README.md              # Documento explicativo
-├─ historico.json         # Histórico exportado em formato JSON
-└─ relatorio_tempo_espera.txt # Relatório de tempo médio de espera
-```
+- Compilador C, como o GCC.
+- Terminal com suporte à entrada de texto.
 
----
+O código seleciona automaticamente a rotina de pausa compatível com Windows ou sistemas POSIX (Linux e macOS).
 
-## ⚙️ Como Executar
+## Compilação e execução
 
-### ✅ Rodando Localmente (no Windows ou Linux)
-
-1. Compile o código com um compilador C (como GCC):
+### Linux e macOS
 
 ```bash
-gcc QuickMed.c -o quickmed
+gcc -std=c99 -Wall -Wextra QuickMed.c -o quickmed
+./quickmed
 ```
 
-2. Execute o programa no terminal:
+### Windows (GCC/MinGW)
 
 ```bash
-./quickmed   # Linux/Mac
-quickmed.exe # Windows
+gcc -std=c99 -Wall -Wextra QuickMed.c -o quickmed.exe
+.\quickmed.exe
 ```
 
-> É necessário um terminal com suporte a entrada de texto.
+Após iniciar, siga as opções apresentadas no menu para cadastrar pacientes, chamar o próximo atendimento e consultar ou exportar os registros.
 
----
+## Arquivos gerados
 
-## 📸 Demonstrações
+Os arquivos são criados no diretório de execução quando a opção correspondente é selecionada no menu:
 
-* [x] Cadastro de paciente com geração de senha única
-* [x] Triagem por prioridade (emergência, urgência, não urgente)
-* [x] Organização de filas por prioridade
-* [x] Chamada automatizada de pacientes
-* [x] Registro e exportação de histórico
-* [x] Relatórios em .txt e .json 
+| Arquivo | Conteúdo |
+| --- | --- |
+| `historico.json` | Histórico de atendimentos em JSON |
+| `historico.csv` | Histórico de atendimentos em CSV |
+| `relatorio_tempo_espera.txt` | Médias de espera agrupadas por prioridade |
 
-*(Imagens e vídeos podem ser adicionados conforme documentação da mostra)*
+As filas e o histórico permanecem em memória durante a execução. Para conservar os dados, exporte o histórico antes de encerrar o programa. Os arquivos exportados incluem informações pessoais, como nome e CPF: não utilize dados reais nem compartilhe esses arquivos publicamente.
 
----
+## Estrutura do repositório
 
-## 👥 Equipe
+```text
+QuickMed/
+├── QuickMed.c
+└── README.md
+```
 
-| Nome                    | GitHub                                           |
-| ----------------------- | ------------------------------------------------ |
-| Benito Juarez           | [@benitojuarez](https://github.com/benito8448) |
-| Hiago Melo              | [@hiagomelo](https://github.com/mkzzo)                   |
+## Equipe
 
----
+| Integrante | GitHub |
+| --- | --- |
+| Benito Juarez | [benito8448](https://github.com/benito8448) |
+| Hiago Melo | [mkzzo](https://github.com/mkzzo) |
 
-## 🧠 Disciplinas Envolvidas
+## Contexto acadêmico
 
-* Estrutura de Dados I
-* Programação Procedural
-* Algoritmos
-
----
-
-## 🏫 Informações Acadêmicas
-
-* Universidade: **Universidade Braz Cubas**
-* Curso: **Ciência da Computação**
-* Semestre: **3º**
-* Período: **Manhã**
-* Professora orientadora: **Dra. Andréa Ono Sakai**
-* Evento: **Mostra de Tecnologia 1º Semestre de 2025**
-* Local: **Laboratório 12**
-* Datas: **05 e 06 de junho de 2025**
-
----
-
-## 📄 Licença
-
-MIT License — sinta-se à vontade para utilizar, estudar e adaptar este projeto.
+Projeto desenvolvido no curso de Ciência da Computação da Universidade Braz Cubas, como demonstração de conceitos de Estrutura de Dados, Programação Procedural e Algoritmos. Apresentado na Mostra de Tecnologia do primeiro semestre de 2025, sob orientação da professora Dra. Andréa Ono Sakai.
